@@ -28,7 +28,9 @@
 
 <header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>AudioFile<span class="signature">(source, opts<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h2>
+        <h2><span class="attribs"><span class="type-signature"></span></span>AudioFile<span class="signature">(source, opts<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="AudioFile.html">AudioFile</a>}</span></h2>
+        
+            <div class="class-description"><p>A <code>nanoresource</code> for handling an audio file.</p></div>
         
     
 </header>
@@ -39,14 +41,21 @@
         
 
     
-
-    
-    <h4 class="name" id="AudioFile"><span class="type-signature"></span>new AudioFile<span class="signature">(source, opts<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+    <h2>Constructor</h2>
     
 
     
+    <h4 class="name" id="AudioFile"><span class="type-signature"></span>new AudioFile<span class="signature">(source, opts<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="AudioFile.html">AudioFile</a>}</span></h4>
+    
+
+    
 
 
+
+<div class="description">
+    <p>Creates a new <code>AudioFile</code> instance from input. Input may be any local file
+path string.</p>
+</div>
 
 
 
@@ -166,6 +175,8 @@
         <th>Type</th>
 
         
+        <th>Attributes</th>
+        
 
         
 
@@ -174,6 +185,100 @@
     </thead>
 
     <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>ffmpeg</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>An object specifying optional FFmpeg config</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>processor</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="FFmpegProcessor.html">FFmpegProcessor</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p><code>FFmpegProcessor</code> object</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
     
 
         <tr>
@@ -190,6 +295,16 @@
             
             </td>
 
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
             
 
             
@@ -217,10 +332,20 @@
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"><p>Specify the <code>Track</code>'s track number</p></td>
+            <td class="description last"><p>Specify the file's track number</p></td>
         </tr>
 
     
@@ -288,6 +413,24 @@
 
 
 
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="AudioFile.html">AudioFile</a></span>
+
+
+    </dd>
+</dl>
+
+    
 
 
 
@@ -320,6 +463,77 @@
     
 
     
+        <h3 class="subsection-title">Members</h3>
+
+        
+            
+<h4 class="name" id="ffmpegResult"><span class="type-signature"></span>ffmpegResult<span class="type-signature"> :<a href="AudioFile.html">AudioFile</a></span></h4>
+
+
+
+
+<div class="description">
+    <p>The results of the attached <code>FFmpegProcessor</code> as a new <code>AudioFile</code> object.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><a href="AudioFile.html">AudioFile</a></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+    
 
     
         <h3 class="subsection-title">Methods</h3>
@@ -330,7 +544,7 @@
     
 
     
-    <h4 class="name" id="_close"><span class="type-signature"></span>_close<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id=".from"><span class="type-signature">(static) </span>from<span class="signature">(source, opts<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="AudioFile.html">AudioFile</a>}</span></h4>
     
 
     
@@ -338,7 +552,216 @@
 
 
 <div class="description">
-    <p>Closes the file. Once closed, work can no longer be performed on the asset</p>
+    <p>Static method that returns a new <code>AudioFile</code> object from a valid file path
+or another valid <code>AudioFile</code> object.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>source</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="AudioFile.html">AudioFile</a></span>
+|
+
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>The <code>AudioFile</code> or file path string</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>opts</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    {}
+                
+                </td>
+            
+
+            <td class="description last"><p>An optional object to specify configuration</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="AudioFile.html">AudioFile</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="_close"><span class="type-signature">(protected) </span>_close<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Closes the file. Work can no longer be performed on the asset.</p>
 </div>
 
 
@@ -413,7 +836,7 @@
     
 
     
-    <h4 class="name" id="_open"><span class="type-signature"></span>_open<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="_open"><span class="type-signature">(protected) </span>_open<span class="signature">()</span><span class="type-signature"></span></h4>
     
 
     
@@ -421,7 +844,7 @@
 
 
 <div class="description">
-    <p>Opens the file. Once opened, work can be done on this asset</p>
+    <p>Opens the file. Once opened, work can be done on this asset.</p>
 </div>
 
 
@@ -430,6 +853,294 @@
 
 
 
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="runBatch"><span class="type-signature"></span>runBatch<span class="signature">(cb)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Execute all attached <code>Processor</code> classes in parallel concurrently.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>cb</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="runProcessor"><span class="type-signature"></span>runProcessor<span class="signature">(i, cb)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Execute the attached <code>Processor</code> at the given index, <code>i</code>, and call back
+with the results from that execution, if any.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>i</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Index number for <code>AudioFile.processors[]</code></p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>cb</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
 
 
 
@@ -506,13 +1217,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Asset.html">Asset</a></li><li><a href="AudioFile.html">AudioFile</a></li><li><a href="AudioPresentation.html">AudioPresentation</a></li><li><a href="CoverArt.html">CoverArt</a></li><li><a href="Episode.html">Episode</a></li><li><a href="Track.html">Track</a></li></ul><h3>Global</h3><ul><li><a href="global.html#FFMPEG_BIN_PATH">FFMPEG_BIN_PATH</a></li><li><a href="global.html#FFPROBE_BIN_PATH">FFPROBE_BIN_PATH</a></li><li><a href="global.html#fingerprint">fingerprint</a></li><li><a href="global.html#peaks">peaks</a></li><li><a href="global.html#SOX_BIN_PATH">SOX_BIN_PATH</a></li><li><a href="global.html#soxi">soxi</a></li><li><a href="global.html#spectrogram">spectrogram</a></li><li><a href="global.html#stats">stats</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Asset.html">Asset</a></li><li><a href="AudioFile.html">AudioFile</a></li><li><a href="CoverArt.html">CoverArt</a></li><li><a href="Extensions.html">Extensions</a></li><li><a href="FFmpegProcessor.html">FFmpegProcessor</a></li><li><a href="FFprobeProcessor.html">FFprobeProcessor</a></li><li><a href="Fingerprint.html">Fingerprint</a></li><li><a href="MediaInfo.html">MediaInfo</a></li><li><a href="Peaks.html">Peaks</a></li><li><a href="Processor.html">Processor</a></li><li><a href="Soxi.html">Soxi</a></li><li><a href="SoxSpectrogram.html">SoxSpectrogram</a></li><li><a href="SoxStat.html">SoxStat</a></li></ul><h3>Global</h3><ul><li><a href="global.html#FFMPEG_BIN_PATH">FFMPEG_BIN_PATH</a></li><li><a href="global.html#FFPROBE_BIN_PATH">FFPROBE_BIN_PATH</a></li><li><a href="global.html#MEDIAINFO_BIN_PATH">MEDIAINFO_BIN_PATH</a></li><li><a href="global.html#SOX_BIN_PATH">SOX_BIN_PATH</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.6</a> on Thu Oct 22 2020 16:43:39 GMT-0400 (Eastern Daylight Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.6</a> on Fri Nov 06 2020 15:15:25 GMT-0500 (GMT-05:00)
 </footer>
 
 <script> prettyPrint(); </script>

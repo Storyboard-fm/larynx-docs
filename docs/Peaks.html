@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: Asset</title>
+    <title>JSDoc: Class: Peaks</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: Asset</h1>
+    <h1 class="page-title">Class: Peaks</h1>
 
     
 
@@ -28,10 +28,9 @@
 
 <header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>Asset<span class="signature">(source, opts<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h2>
+        <h2><span class="attribs"><span class="type-signature"></span></span>Peaks<span class="signature">(audio, opts<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="Peaks.html">Peaks</a>}</span></h2>
         
-            <div class="class-description"><p>An <code>Asset</code> is any non-audio media asset which can be attached to the audio
-content. Examples may include a text document, a PDF file, or an image.</p></div>
+            <div class="class-description"><p>Peaks data processor for use in JS waveform UI frameworks.</p></div>
         
     
 </header>
@@ -46,7 +45,7 @@ content. Examples may include a text document, a PDF file, or an image.</p></div
     
 
     
-    <h4 class="name" id="Asset"><span class="type-signature"></span>new Asset<span class="signature">(source, opts<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="Peaks"><span class="type-signature"></span>new Peaks<span class="signature">(audio, opts<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="Peaks.html">Peaks</a>}</span></h4>
     
 
     
@@ -88,13 +87,13 @@ content. Examples may include a text document, a PDF file, or an image.</p></div
 
         <tr>
             
-                <td class="name"><code>source</code></td>
+                <td class="name"><code>audio</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">string</span>
+<span class="param-type"><a href="AudioFile.html">AudioFile</a></span>
 
 
             
@@ -112,7 +111,7 @@ content. Examples may include a text document, a PDF file, or an image.</p></div
 
             
 
-            <td class="description last"><p>File path to the asset</p></td>
+            <td class="description last"></td>
         </tr>
 
     
@@ -141,213 +140,6 @@ content. Examples may include a text document, a PDF file, or an image.</p></div
 
                 
                 </td>
-            
-
-            
-
-            <td class="description last"><p>An optional configuration object</p>
-                <h6>Properties</h6>
-                
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>hint</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Asset hint</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-            </td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-    </div>
-
-    
-        <h3 class="subsection-title">Extends</h3>
-
-        
-
-
-    <ul>
-        <li>nanoresource</li>
-    </ul>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <h3 class="subsection-title">Methods</h3>
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="_close"><span class="type-signature"></span>_close<span class="signature">(cb)</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    <p>_close.</p>
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>cb</code></td>
-            
-
-            <td class="type">
-            
-            </td>
-
             
 
             
@@ -395,6 +187,17 @@ content. Examples may include a text document, a PDF file, or an image.</p></div
     
 
     
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="https://github.com/bbc/audiowaveform">audiowaveform</a></li>
+        
+            <li><a href="https://wavesurfer-js.org/">WaveSurfer.js</a></li>
+        
+            <li><a href="https://github.com/bbc/peaks.js">peaks.js</a></li>
+        </ul>
+    </dd>
+    
 
     
 </dl>
@@ -413,10 +216,59 @@ content. Examples may include a text document, a PDF file, or an image.</p></div
 
 
 
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="Peaks.html">Peaks</a></span>
+
+
+    </dd>
+</dl>
+
+    
 
 
 
 
+
+    
+    </div>
+
+    
+        <h3 class="subsection-title">Extends</h3>
+
+        
+
+
+    <ul>
+        <li><a href="Processor.html">Processor</a></li>
+    </ul>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
 
         
             
@@ -424,7 +276,7 @@ content. Examples may include a text document, a PDF file, or an image.</p></div
     
 
     
-    <h4 class="name" id="_open"><span class="type-signature"></span>_open<span class="signature">(cb)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="run"><span class="type-signature"></span>run<span class="signature">(cb)</span><span class="type-signature"></span></h4>
     
 
     
@@ -432,7 +284,7 @@ content. Examples may include a text document, a PDF file, or an image.</p></div
 
 
 <div class="description">
-    <p>_open.</p>
+    <p>Run <code>audiowaveform</code> on the input <code>AudioFile</code>.</p>
 </div>
 
 
@@ -472,6 +324,11 @@ content. Examples may include a text document, a PDF file, or an image.</p></div
             
 
             <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
             
             </td>
 
