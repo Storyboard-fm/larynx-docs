@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: Processor</title>
+    <title>JSDoc: Class: AudioMaster</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: Processor</h1>
+    <h1 class="page-title">Class: AudioMaster</h1>
 
     
 
@@ -28,9 +28,9 @@
 
 <header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>Processor<span class="signature">(audio)</span><span class="type-signature"></span></h2>
+        <h2><span class="attribs"><span class="type-signature"></span></span>AudioMaster<span class="signature">(source, opts)</span><span class="type-signature"> &rarr; {<a href="AudioMaster.html">AudioMaster</a>}</span></h2>
         
-            <div class="class-description"><p>A <code>nanoprocess</code> representing a signal processor or audio filter.</p></div>
+            <div class="class-description"><p>A finalized version of an <code>AudioFile</code>, ready to be encoded for distribution.</p></div>
         
     
 </header>
@@ -45,12 +45,16 @@
     
 
     
-    <h4 class="name" id="Processor"><span class="type-signature"></span>new Processor<span class="signature">(audio)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="AudioMaster"><span class="type-signature"></span>new AudioMaster<span class="signature">(source, opts)</span><span class="type-signature"> &rarr; {<a href="AudioMaster.html">AudioMaster</a>}</span></h4>
     
 
     
 
 
+
+<div class="description">
+    <p>Creates a new <code>AudioMaster</code> instance from the input <code>Source</code>.</p>
+</div>
 
 
 
@@ -85,13 +89,36 @@
 
         <tr>
             
-                <td class="name"><code>audio</code></td>
+                <td class="name"><code>source</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type"><a href="AudioFile.html">AudioFile</a></span>
+<span class="param-type">Source</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>opts</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
 
 
             
@@ -162,6 +189,24 @@
 
 
 
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="AudioMaster.html">AudioMaster</a></span>
+
+
+    </dd>
+</dl>
+
+    
 
 
 
@@ -177,7 +222,7 @@
 
 
     <ul>
-        <li>Process</li>
+        <li>AudioTrack</li>
     </ul>
 
 
@@ -193,6 +238,68 @@
 
     
 
+    
+        <h3 class="subsection-title">Members</h3>
+
+        
+            
+<h4 class="name" id="channelLayout"><span class="type-signature"></span>channelLayout<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Returns the channel layout as determined by FFprobe. When such data is
+unavailable a best guess attempt is made based on available metadata.</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
     
 
     

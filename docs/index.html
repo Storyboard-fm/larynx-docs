@@ -57,7 +57,14 @@ process handling</li>
 <li>Recognizes all known media binary file formats</li>
 </ul>
 <h2>Getting Started</h2>
-<p><code>npm i larynx</code></p>
+<h3>Installation</h3>
+<blockquote>
+<p>Using npm via GitHub SSH</p>
+</blockquote>
+<p>If you can read this README on GitHub, you can install this module via NPM using
+the following command:</p>
+<p><code>npm install git+ssh://git@github.com/Storyboard-fm/larynx.git</code></p>
+<h3>Usage</h3>
 <pre class="prettyprint source lang-js"><code>// Do this...
 const { AudioFile, Fingerprint, Peaks, SoxSpectrogram } = require('larynx')
 
@@ -68,17 +75,25 @@ const { AudioFile, Fingerprint, Peaks, SoxSpectrogram } = require('larynx')
 <h3>Dependencies</h3>
 <p>As of now, the following must be installed &amp; in your PATH before using larynx:</p>
 <ul>
-<li>audiowaveform</li>
-<li>chromaprint/fpcalc</li>
-<li>soxi</li>
+<li><code>audiowaveform</code></li>
+<li><code>fpcalc</code></li>
+<li><code>soxi</code></li>
 </ul>
 <h4>Provided</h4>
 <p>This module provides static binaries for:</p>
 <ul>
-<li>ffmpeg</li>
-<li>ffprobe</li>
-<li>sox</li>
+<li><code>ffmpeg</code></li>
+<li><code>ffprobe</code></li>
+<li><code>sox</code></li>
+<li><code>mediainfo</code></li>
 </ul>
+<h3>Documentation</h3>
+<p>This module is marked up with <code>jsdoc</code>. To build the documentation, simply run
+from the root of this repository:</p>
+<pre class="prettyprint source lang-sh"><code>$ mkdir -p ../larynx-docs/ # Make a new dir for the docs build
+$ npm run docs # Once complete, open the index.html file in your browser
+$ open ../larynx-docs/docs/index.html # or do this
+</code></pre>
 <h2>Example</h2>
 <pre class="prettyprint source lang-js"><code>const { AudioFile, SoxStat, Soxi } = require('larynx')
 
@@ -96,18 +111,55 @@ audio.runBatch((err) => {
 })
 </code></pre>
 <h2>API</h2>
-<blockquote>
-<p>WIP</p>
-</blockquote>
+<p><code>larynx</code> provides interfaces and ES6-style class objects for working with audio
+assets as well as external signal processing libraries.</p>
+<p>Several different types of audio assets are defined, to enable various forms of
+audio analysis, production, and insight, at various stages of production.</p>
 <h3><code>AudioFile</code></h3>
+<p>Extends the <code>Source</code> class provided by <a href="https://www.npmjs.com/package/little-media-box" title="little-media-box"><code>little-media-box</code></a>. Accepts any
+number of available <code>Processor</code> objects to the file for asynchronous or parallel
+execution.</p>
 <pre class="prettyprint source lang-js"><code>const { AudioFile } = require('larynx')
+
 const audio = new AudioFile('./test.wav')
+
+audio.open(() => {
+  const audioCopy = AudioFile.from(audio)
+})
 </code></pre>
-<h3><code>Asset</code></h3>
-<pre class="prettyprint source lang-js"><code>const { Asset } = require('larynx')
-const image = new Asset('./image.png', { hint: 'image' })
+<p>Not intended to be used on finalized audio masters. For this type of asset, see
+the <code>AudioMaster</code> class, below.</p>
+<h3><code>AudioMaster</code></h3>
+<p>Extends the <code>AudioTrack</code> class provided by <a href="https://www.npmjs.com/package/little-media-box" title="little-media-box"><code>little-media-box</code></a>. Provides a
+<a href="https://github.com/little-core-labs/nanoresource-pool" title="little-core-labs/nanoresource-pool"><code>nanoresource-pool</code></a> to store lossy encodes (see
+<code>AudioProxy</code>) of the mastered audio.</p>
+<pre class="prettyprint source lang-js"><code>const { AudioFile, AudioMaster } = require('larynx')
+
+const audio = new AudioFile('./test.wav')
+
+audio.open(() => {
+  const audioMaster = AudioMaster.from(audio)
+
+  audioMaster.open(() => {
+    console.log(audioMaster.channelLayout())
+    // 'stereo'
+  })
+})
 </code></pre>
-<h3><code>Processor</code></h3>
+<h3><code>AudioProxy</code></h3>
+<p>Extends <code>AudioFile</code> to provide functionality specific to consumer-ready
+lossy audio encodes.</p>
+<pre class="prettyprint source lang-js"><code>const { AudioFile, AudioMaster, AudioProxy } = require('larynx')
+
+const audioMaster = AudioMaster.from(new AudioFile('./master.wav'))
+const mp3 = new AudioProxy('./master_encoded.mp3')
+
+mp3.open(() => {
+  mp3.validate(console.log)
+  audioMaster.proxies.add(mp3)
+})
+</code></pre>
+<h3><code>Processors</code></h3>
 <p>One or more <code>Processor</code> may be added to an  <code>AudioFile</code>. To do so, simply
 instantiate a new <code>Processor</code> and pass the target <code>AudioFile</code> as its param:</p>
 <pre class="prettyprint source lang-js"><code>new Processor(audio)
@@ -129,14 +181,15 @@ parallel by invoking <code>AudioFile.runBatch</code>:</p>
 <pre class="prettyprint source lang-js"><code>const { AudioFile, Peaks, Soxi, SoxStat } = require('larynx')
 
 const audio = new AudioFile('./test.wav')
+
 new Peaks(audio)
 new SoxStat(audio)
 new Soxi(audio)
 
 audio.runBatch(err => {
   if (err) console.log(err)
-  
-  // All processors have been executed and their results have been inherited 
+
+  // All processors have been executed and their results have been inherited
 
   // Grab the scaled peaks generated by the Peaks processor
   const audioWaveformPeaks = Buffer.from(audio.peaks)
@@ -148,47 +201,8 @@ audio.runBatch(err => {
   console.log('peak dBFS', audio.peak.db)
 })
 </code></pre>
-<p>The following <code>Processor</code> classes are available:</p>
-<h4><code>Fingerprint</code></h4>
-<blockquote>
-<p>Generates audio fingerprint via <code>fpcalc</code> tool.</p>
-</blockquote>
-<h4><code>Peaks</code></h4>
-<blockquote>
-<p>Generates scaled peaks data via <code>audiowaveform</code> for use in modern JS waveform
-UI frameworks.</p>
-</blockquote>
-<h4><code>SoxSpectrogram</code></h4>
-<blockquote>
-<p>Provides full-range spectrogram image via <code>sox spectrogram</code> command.</p>
-</blockquote>
-<h4><code>SoxStat</code></h4>
-<blockquote>
-<p>Provides audio-level file introspection via <code>sox stat</code> command.</p>
-</blockquote>
-<h4><code>Soxi</code></h4>
-<blockquote>
-<p>Provides audio file formatting metadata via <code>soxi</code>.</p>
-</blockquote>
-<h3><code>FFmpegProcessor</code></h3>
-<p>Attaches an instance of <code>fluent-ffmpeg</code> to an <code>AudioFile</code>.</p>
-<pre class="prettyprint source lang-js"><code>const { AudioFile, FFmpegProcessor } = require('larynx')
-
-const audio = new AudioFile('./test/test.wav')
-
-// Attach a `fluent-ffmpeg` instance to the `AudioFile` with some opts
-const ffmpeg = new FFmpegProcessor(audio, {
-  output: {
-    codec: &quot;libmp3lame&quot;,
-    format: &quot;matroska&quot;,
-    filename: &quot;test.mkv&quot;,
-    options: [&quot;-ar&quot;, &quot;32000&quot;, &quot;-ac&quot;, &quot;1&quot;]
-  }
-}).run()
-
-// Persist the resulting FFmpeg output as a new `AudioFile`
-const mp3Mkv = audio.ffmpegResult
-</code></pre>
+<p>There is an ever-growing list of <code>Processor</code> classes available. See the
+<code>processor/</code> directory in this repo for the full selection.</p>
 <h2>Testing</h2>
 <p>We utilize <code>mocha</code> and <code>chai</code> for our testing framework and perform coverage
 checks with <code>nyc</code>. After installing the npm dev dependencies, execute the
@@ -205,13 +219,13 @@ following to run the unit tests.</p>
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Asset.html">Asset</a></li><li><a href="AudioFile.html">AudioFile</a></li><li><a href="CoverArt.html">CoverArt</a></li><li><a href="Extensions.html">Extensions</a></li><li><a href="FFmpegProcessor.html">FFmpegProcessor</a></li><li><a href="FFprobeProcessor.html">FFprobeProcessor</a></li><li><a href="Fingerprint.html">Fingerprint</a></li><li><a href="MediaInfo.html">MediaInfo</a></li><li><a href="Peaks.html">Peaks</a></li><li><a href="Processor.html">Processor</a></li><li><a href="Soxi.html">Soxi</a></li><li><a href="SoxSpectrogram.html">SoxSpectrogram</a></li><li><a href="SoxStat.html">SoxStat</a></li></ul><h3>Global</h3><ul><li><a href="global.html#FFMPEG_BIN_PATH">FFMPEG_BIN_PATH</a></li><li><a href="global.html#FFPROBE_BIN_PATH">FFPROBE_BIN_PATH</a></li><li><a href="global.html#MEDIAINFO_BIN_PATH">MEDIAINFO_BIN_PATH</a></li><li><a href="global.html#SOX_BIN_PATH">SOX_BIN_PATH</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Asset.html">Asset</a></li><li><a href="AudioFile.html">AudioFile</a></li><li><a href="AudioMaster.html">AudioMaster</a></li><li><a href="AudioProxy.html">AudioProxy</a></li><li><a href="CoverArt.html">CoverArt</a></li><li><a href="Extensions.html">Extensions</a></li><li><a href="Fingerprint.html">Fingerprint</a></li><li><a href="MediaInfo.html">MediaInfo</a></li><li><a href="Peaks.html">Peaks</a></li><li><a href="Processor.html">Processor</a></li><li><a href="Soxi.html">Soxi</a></li><li><a href="SoxSpectrogram.html">SoxSpectrogram</a></li><li><a href="SoxStat.html">SoxStat</a></li><li><a href="SoxStats.html">SoxStats</a></li><li><a href="WordCount.html">WordCount</a></li></ul><h3>Global</h3><ul><li><a href="global.html#ACCEPTED_CODEC_NAMES">ACCEPTED_CODEC_NAMES</a></li><li><a href="global.html#DEFAULT_STREAM_INDEX">DEFAULT_STREAM_INDEX</a></li><li><a href="global.html#FFMPEG_BIN_PATH">FFMPEG_BIN_PATH</a></li><li><a href="global.html#FFPROBE_BIN_PATH">FFPROBE_BIN_PATH</a></li><li><a href="global.html#MEDIAINFO_BIN_PATH">MEDIAINFO_BIN_PATH</a></li><li><a href="global.html#SOX_BIN_PATH">SOX_BIN_PATH</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.6</a> on Fri Nov 06 2020 15:15:25 GMT-0500 (GMT-05:00)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.6</a> on Sun Apr 11 2021 18:59:18 GMT-0400 (Eastern Daylight Time)
 </footer>
 
 <script> prettyPrint(); </script>

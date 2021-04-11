@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: FFprobeProcessor</title>
+    <title>JSDoc: Class: WordCount</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: FFprobeProcessor</h1>
+    <h1 class="page-title">Class: WordCount</h1>
 
     
 
@@ -28,10 +28,9 @@
 
 <header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>FFprobeProcessor<span class="signature">(audio, opts<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h2>
+        <h2><span class="attribs"><span class="type-signature"></span></span>WordCount<span class="signature">(audio, opts<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h2>
         
-            <div class="class-description"><p>Run <code>ffprobe</code> commands on an <code>AudioFile</code> to gather its media formatting
-and related properties.</p></div>
+            <div class="class-description"><p>A <code>Processor</code> for guessing the word count of an audio file.</p></div>
         
     
 </header>
@@ -46,7 +45,7 @@ and related properties.</p></div>
     
 
     
-    <h4 class="name" id="FFprobeProcessor"><span class="type-signature"></span>new FFprobeProcessor<span class="signature">(audio, opts<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="WordCount"><span class="type-signature"></span>new WordCount<span class="signature">(audio, opts<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
     
 
     
@@ -54,7 +53,7 @@ and related properties.</p></div>
 
 
 <div class="description">
-    <p>Creates a new <code>FFprobeProcessor</code> instance for the provided <code>AudioFile</code>.</p>
+    <p>Creates a new <code>WordCount</code>.</p>
 </div>
 
 
@@ -81,6 +80,8 @@ and related properties.</p></div>
         <th>Attributes</th>
         
 
+        
+        <th>Default</th>
         
 
         <th class="last">Description</th>
@@ -115,8 +116,12 @@ and related properties.</p></div>
             
 
             
+                <td class="default">
+                
+                </td>
+            
 
-            <td class="description last"><p>An <code>AudioFile</code></p></td>
+            <td class="description last"></td>
         </tr>
 
     
@@ -148,8 +153,14 @@ and related properties.</p></div>
             
 
             
+                <td class="default">
+                
+                    {}
+                
+                </td>
+            
 
-            <td class="description last"><p>An object of customization options.</p></td>
+            <td class="description last"></td>
         </tr>
 
     
@@ -258,13 +269,13 @@ and related properties.</p></div>
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Asset.html">Asset</a></li><li><a href="AudioFile.html">AudioFile</a></li><li><a href="CoverArt.html">CoverArt</a></li><li><a href="Extensions.html">Extensions</a></li><li><a href="FFmpegProcessor.html">FFmpegProcessor</a></li><li><a href="FFprobeProcessor.html">FFprobeProcessor</a></li><li><a href="Fingerprint.html">Fingerprint</a></li><li><a href="Master.html">Master</a></li><li><a href="MediaInfo.html">MediaInfo</a></li><li><a href="Peaks.html">Peaks</a></li><li><a href="Processor.html">Processor</a></li><li><a href="Soxi.html">Soxi</a></li><li><a href="SoxSpectrogram.html">SoxSpectrogram</a></li><li><a href="SoxStat.html">SoxStat</a></li><li><a href="Stem.html">Stem</a></li><li><a href="Track.html">Track</a></li></ul><h3>Global</h3><ul><li><a href="global.html#FFMPEG_BIN_PATH">FFMPEG_BIN_PATH</a></li><li><a href="global.html#FFPROBE_BIN_PATH">FFPROBE_BIN_PATH</a></li><li><a href="global.html#MEDIAINFO_BIN_PATH">MEDIAINFO_BIN_PATH</a></li><li><a href="global.html#SOX_BIN_PATH">SOX_BIN_PATH</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Asset.html">Asset</a></li><li><a href="AudioFile.html">AudioFile</a></li><li><a href="AudioMaster.html">AudioMaster</a></li><li><a href="AudioProxy.html">AudioProxy</a></li><li><a href="CoverArt.html">CoverArt</a></li><li><a href="Extensions.html">Extensions</a></li><li><a href="Fingerprint.html">Fingerprint</a></li><li><a href="MediaInfo.html">MediaInfo</a></li><li><a href="Peaks.html">Peaks</a></li><li><a href="Processor.html">Processor</a></li><li><a href="Soxi.html">Soxi</a></li><li><a href="SoxSpectrogram.html">SoxSpectrogram</a></li><li><a href="SoxStat.html">SoxStat</a></li><li><a href="SoxStats.html">SoxStats</a></li><li><a href="WordCount.html">WordCount</a></li></ul><h3>Global</h3><ul><li><a href="global.html#ACCEPTED_CODEC_NAMES">ACCEPTED_CODEC_NAMES</a></li><li><a href="global.html#DEFAULT_STREAM_INDEX">DEFAULT_STREAM_INDEX</a></li><li><a href="global.html#FFMPEG_BIN_PATH">FFMPEG_BIN_PATH</a></li><li><a href="global.html#FFPROBE_BIN_PATH">FFPROBE_BIN_PATH</a></li><li><a href="global.html#MEDIAINFO_BIN_PATH">MEDIAINFO_BIN_PATH</a></li><li><a href="global.html#SOX_BIN_PATH">SOX_BIN_PATH</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.6</a> on Sat Nov 07 2020 11:23:31 GMT-0500 (GMT-05:00)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.6</a> on Sun Apr 11 2021 18:59:18 GMT-0400 (Eastern Daylight Time)
 </footer>
 
 <script> prettyPrint(); </script>

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: AudioFile</title>
+    <title>JSDoc: Class: AudioProxy</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: AudioFile</h1>
+    <h1 class="page-title">Class: AudioProxy</h1>
 
     
 
@@ -28,9 +28,11 @@
 
 <header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>AudioFile<span class="signature">(source, opts<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="AudioFile.html">AudioFile</a>}</span></h2>
+        <h2><span class="attribs"><span class="type-signature"></span></span>AudioProxy<span class="signature">(source, opts)</span><span class="type-signature"> &rarr; {<a href="AudioProxy.html">AudioProxy</a>}</span></h2>
         
-            <div class="class-description"><p>A <code>nanoresource</code> for handling an audio file.</p></div>
+            <div class="class-description"><p>A finalized version of an encoded <code>AudioFile</code>, ready to be distributed. This
+should be the file intended to be delivered to the client player application
+or device.</p></div>
         
     
 </header>
@@ -45,7 +47,7 @@
     
 
     
-    <h4 class="name" id="AudioFile"><span class="type-signature"></span>new AudioFile<span class="signature">(source, opts<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="AudioFile.html">AudioFile</a>}</span></h4>
+    <h4 class="name" id="AudioProxy"><span class="type-signature"></span>new AudioProxy<span class="signature">(source, opts)</span><span class="type-signature"> &rarr; {<a href="AudioProxy.html">AudioProxy</a>}</span></h4>
     
 
     
@@ -53,8 +55,7 @@
 
 
 <div class="description">
-    <p>Creates a new <code>AudioFile</code> instance from input. Input may be any local file
-path string.</p>
+    <p>Creates a new <code>AudioProxy</code> instance.</p>
 </div>
 
 
@@ -78,11 +79,7 @@ path string.</p>
         <th>Type</th>
 
         
-        <th>Attributes</th>
-        
 
-        
-        <th>Default</th>
         
 
         <th class="last">Description</th>
@@ -100,6 +97,12 @@ path string.</p>
             <td class="type">
             
                 
+<span class="param-type"><a href="AudioFile.html">AudioFile</a></span>
+|
+
+<span class="param-type">Source</span>
+|
+
 <span class="param-type">string</span>
 
 
@@ -107,22 +110,10 @@ path string.</p>
             </td>
 
             
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
 
             
-                <td class="default">
-                
-                </td>
-            
 
-            <td class="description last"><p>The path to the source audio asset</p></td>
+            <td class="description last"></td>
         </tr>
 
     
@@ -142,87 +133,10 @@ path string.</p>
             </td>
 
             
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                    {}
-                
-                </td>
-            
-
-            <td class="description last"><p>An optional object specifying configurable options</p>
-                <h6>Properties</h6>
-                
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-        <th>Attributes</th>
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>tags</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
 
             
 
-            <td class="description last"><p>An object of tags to associate with the file</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-            </td>
+            <td class="description last"></td>
         </tr>
 
     
@@ -294,7 +208,7 @@ path string.</p>
     </dt>
     <dd>
         
-<span class="param-type"><a href="AudioFile.html">AudioFile</a></span>
+<span class="param-type"><a href="AudioProxy.html">AudioProxy</a></span>
 
 
     </dd>
@@ -316,7 +230,7 @@ path string.</p>
 
 
     <ul>
-        <li>Source</li>
+        <li><a href="AudioFile.html">AudioFile</a></li>
     </ul>
 
 
@@ -423,6 +337,11 @@ path string.</p>
 
     
 
+    
+    <dt class="tag-overrides">Overrides:</dt>
+    <dd class="tag-overrides"><ul class="dummy"><li>
+        <a href="AudioFile.html#runBatch">AudioFile#runBatch</a>
+    </li></ul></dd>
     
 
     
@@ -539,6 +458,144 @@ with the results from that execution, if any.</p>
             <td class="description last"><p>Index number for <code>AudioFile.processors[]</code></p></td>
         </tr>
 
+    
+
+        <tr>
+            
+                <td class="name"><code>cb</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-overrides">Overrides:</dt>
+    <dd class="tag-overrides"><ul class="dummy"><li>
+        <a href="AudioFile.html#runProcessor">AudioFile#runProcessor</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="validate"><span class="type-signature"></span>validate<span class="signature">(cb)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Probes the <code>AudioProxy</code> and validates the results against what a sane
+person would consider acceptable for delivering to an end-user.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
     
 
         <tr>
